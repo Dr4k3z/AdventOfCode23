@@ -25,10 +25,8 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 Consider your entire calibration document. What is the sum of all of the calibration values?
 '''
 
-sum = 0
-file = open("1-friday/calibration.txt")
 
-for line in file:
+def calibrate(line):
     numbers = []
     for c in line:
         try:
@@ -36,7 +34,17 @@ for line in file:
             numbers.append(a)
         except:
             pass
-    sum += numbers[0]*10 + numbers[-1]
-    
-print("Sum of calibration values: ",sum)
+    return numbers[0]*10 + numbers[-1]
 
+
+def main():
+    sum = 0
+    file = open("1-friday/calibration.txt")
+
+    for line in file:
+        sum += calibrate(line)
+        
+    print("Sum of calibration values: ",sum)
+
+if __name__=="__main__":
+    main()
