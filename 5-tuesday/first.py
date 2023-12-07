@@ -96,7 +96,8 @@
 
 import re
 
-fileNames = ["5-tuesday/input/seed2soil.txt","5-tuesday/input/soil2fertilizer.txt","5-tuesday/input/fertilizer2water.txt","5-tuesday/input/water2light.txt","5-tuesday/input/light2temperature.txt","5-tuesday/input/temperature2humidity.txt","5-tuesday/input/humidity2location.txt"]
+fileNamesExample = ["5-tuesday/input/seed2soil.txt","5-tuesday/input/soil2fertilizer.txt","5-tuesday/input/fertilizer2water.txt","5-tuesday/input/water2light.txt","5-tuesday/input/light2temperature.txt","5-tuesday/input/temperature2humidity.txt","5-tuesday/input/humidity2location.txt"]
+fileNames = ["5-tuesday/seed2soil.txt","5-tuesday/soil2fertilizer.txt","5-tuesday/fertilizer2water.txt","5-tuesday/water2light.txt","5-tuesday/light2temperature.txt","5-tuesday/temperature2humidity.txt","5-tuesday/humidity2location.txt"]
 
 def createMaps(fileName):
     #print(fileName)
@@ -118,26 +119,29 @@ def location(s):
         flag = False
         for i in range(n):
             if chain[-1]>=src_range[i][1] and chain[-1]<=src_range[i][2]:
-                print(chain[-1]," found in range ",src_range)
+                #print(chain[-1]," found in range ",src_range)
                 diff = chain[-1]-src_range[i][1]
                 chain.append(src_range[i][0]+diff)
                 flag = True
                 break
         if not flag:
             chain.append(chain[-1])
-        print(chain[-1])
+        #print(chain[-1])
     return chain[-1]
 
 def main():
-    file_seeds = open("5-tuesday/input/seeds.txt")
+    file_seeds = open("5-tuesday/seeds.txt")
     seeds = []
     for line in file_seeds:
         seeds.append(int(line))
     map = {}
     for s in seeds:
-        print("Seed ",s)
+        #print("Seed ",s)
         map[s] = location(s)
-    print(map)
+    #print(map)
+
+    idx = min(map.values())
+    print("lowest location number: ",idx)
 
 if __name__=="__main__":
     main()
