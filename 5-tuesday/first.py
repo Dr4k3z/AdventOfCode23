@@ -130,7 +130,7 @@ def location(s):
     return chain[-1]
 
 def main():
-    file_seeds = open("5-tuesday/seeds.txt")
+    file_seeds = open("5-tuesday/seeds2.txt")
     seeds = []
     for line in file_seeds:
         seeds.append(int(line))
